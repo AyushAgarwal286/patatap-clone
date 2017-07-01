@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myCanvas{
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            
+            
+        }
+    
+    
+    
+    </style>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="paper-full.js"></script>
+<!-- Define inlined PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas">
+var circles=[];
+	function onKeyDown(event) {
+	var maxPoint = new Point(view.size.width,view.size.height);
+   var randomPoint=Point.random();
+   var point=maxPoint*randomPoint;
+   var newCircle = new Path.Circle(point,500);
+    newCircle.fillColor="orange";
+    circles.push(newCircle);
+
+}
+var animatedCircle = new Path.Circle((300,300),100)
+animatedCircle.fillColor="red";
+
+function onFrame(event) {
+for(var i=0;i<circles.length;i++)
+{
+circles[i].fillColor.hue += 1;
+
+circles[i].scale(0.9);
+}}
+
+
+    </script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
